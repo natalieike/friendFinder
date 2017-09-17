@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/natalieike/friendFinder/issues"
   },
-  "homepage": "https://github.com/natalieike/friendFinder#readme"
+  "homepage": "https://github.com/natalieike/friendFinder#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "path": "^0.12.7"
+  }
 }
