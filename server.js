@@ -1,7 +1,6 @@
 //Dependencies
 var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
+
 
 //Set Up Express
 var app = express();
@@ -10,14 +9,11 @@ var PORT = process.env.PORT || 8000;
 //Route Files
 var apiRoutes = require("./app/routing/apiRoutes.js");
 var htmlRoutes = require("./app/routing/htmlRoutes.js");
-app.use("/", htmlRoutes);
-app.use("/api", apiRoutes);
-
-//Set up parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+var router = express.Router();
+app.use('/', router); // Mount the router as middleware at path /
+router.get('/api', apiRoutes); //for API
+router.get('/', htmlRoutes); //for Home page
+router.get('/s*', htmlRoutes); //Both alternate paths start with s - style and survey
 
 //Set up Listening
 app.listen(PORT, function(){

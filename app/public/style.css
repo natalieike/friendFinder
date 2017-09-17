@@ -15,6 +15,11 @@ body{
 
 .friendPicture {
 	margin: 20px;
+	height: 150px;
 	overflow: auto;
 	display: inline-block;
+}
+
+#friendPanel{
+	display: none;
 }

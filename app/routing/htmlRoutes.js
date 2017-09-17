@@ -15,7 +15,7 @@ hrouter.get("/style", function(req, res) {
 
 //Route to Survey page
 hrouter.get("/survey", function(req, res) {
-  res.sendFile(path.join(__dirname, "survey.html"));
+  res.sendFile(path.join(__dirname, "../public/survey.html"));
 });
-
+	
 module.exports = hrouter;
