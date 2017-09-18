@@ -13,7 +13,13 @@ arouter.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Returns JSON of all Friends
 arouter.get("/api/", function(req, res) {
-  return res.json(friends);
+	fs.readFile(path.join(__dirname, "../data/friends.js"), "utf8", function(err, data){
+		if(err){
+			return console.log(err);
+		}
+		var friends = JSON.parse(data.split(","));
+  	return res.json(friends);
+	});
 });
 
 // Create New Friends - takes in JSON input, returns friend match
