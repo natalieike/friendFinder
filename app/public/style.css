@@ -23,3 +23,8 @@ body{
 #friendPanel{
 	display: none;
 }
+.navbar{
+	background-color: #e6f2ff;
+	color: #000d1a;
+	font-size: 38px;
+}

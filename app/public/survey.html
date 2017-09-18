@@ -10,6 +10,185 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+		<nav class="navbar">
+  	<div class="container">
+   	 <div class="navbar-header">
+     		<p>Friend Finder Survey</p>
+    	</div><!-- /.navbar-header -->
+  	</div><!-- /.container -->
+	</nav>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<ol> <!--Survey Questions-->
+					<li>
+						<p>How much TV do you watch?</p>
+						<select class="form-control" id="0">
+  						<option>1. What's TV?</option>
+		  				<option>2. Just the news</option>
+  						<option>3. I have a few shows I like</option>
+  						<option>4. I like my stories</option>
+ 			 				<option>5. Fox News, All the time</option>
+						</select>
+					</li>
+					<li>
+						<p>What's your favorite type of music?</p>
+						<select class="form-control" id="1">
+  						<option>1. Jazz</option>
+  						<option>2. Classical</option>
+		  				<option>3. Rock</option>
+  						<option>4. Pop</option>
+  						<option>5. Country</option>
+						</select>
+					</li>
+					<li>
+						<p>What're you drinking?</p>
+						<select class="form-control" id="2">
+		  				<option>1. Red Wine</option>
+  						<option>2. Whiskey. Neat.</option>
+  						<option>3. The finest microbrew</option>
+		  				<option>4. Sprite</option>
+  						<option>5. Coors</option>
+						</select>
+					</li>
+					<li>
+						<p>Choose you favorite baked good</p>
+						<select class="form-control" id="3">
+  						<option>1. Cake</option>
+  						<option>2. Cookies</option>
+		  				<option>3. Pie</option>
+  						<option>4. Gluten Free</option>
+  						<option>5. ALL THE BAKED GOODS!</option>
+						</select>
+					</li>
+					<li>
+						<p>What's your favorite color?</p>
+						<select class="form-control" id="4">
+		  				<option>1. Blue</option>
+  						<option>2. Green</option>
+  						<option>3. Red</option>
+		  				<option>4. Black</option>
+  						<option>5. Rainbow</option>
+						</select>
+					</li>
+					<li>
+						<p>What's your favorite sport?</p>
+						<select class="form-control" id="5">
+  						<option>1. Football</option>
+  						<option>2. Baseball</option>
+		  				<option>3. Basketball</option>
+  						<option>4. Car Racing</option>
+  						<option>5. umm, Sportsball?</option>
+						</select>
+					</li>
+					<li>
+						<p>How do you like your steak?</p>
+						<select class="form-control" id="6">
+		  				<option>1. Bloody</option>
+  						<option>2. Medium Rare</option>
+  						<option>3. Medium</option>
+		  				<option>4. Dead</option>
+  						<option>5. I don't eat meat</option>
+						</select>
+					</li>
+					<li>
+						<p>How do you like your fish?</p>
+						<select class="form-control" id="7">
+  						<option>1. Sushi</option>
+  						<option>2. Fried</option>
+		  				<option>3. Blackened</option>
+  						<option>4. Sauteed</option>
+  						<option>5. Swimming</option>
+						</select>
+					</li>
+					<li>
+						<p>What's your favorite dog?</p>
+						<select class="form-control" id="8">
+		  				<option>1. Mutt</option>
+  						<option>2. Beagle</option>
+  						<option>3. Pug</option>
+		  				<option>4. Doodle</option>
+  						<option>5. I'm terrible and don't like dogs</option>
+						</select>
+					</li>
+					<li>
+						<p>What's your clothing style?</p>
+						<select class="form-control" id="9">
+  						<option>1. Comfy</option>
+  						<option>2. Athletic</option>
+		  				<option>3. Preppy</option>
+  						<option>4. Formal</option>
+  						<option>5. PJs</option>
+						</select>
+					</li>
+				</ol>
+			</div> <!--/.col-->
+		</div> <!--/.row-->
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<form>
+  				<div class="form-group">
+    				<label for="exampleInputEmail1">Name</label>
+   					<input type="email" class="form-control" id="name" placeholder="Your Name">
+  				</div>
+  				<div class="form-group">
+    				<label for="exampleInputEmail1">Picture</label>
+   					<input type="email" class="form-control" id="picture" placeholder="Picture URL">
+  				</div>
+					<button class="btn btn-primary" type="submit" id="submit">Find A Friend!</button>
+        	<a href="/"><button type="button" class="btn btn-info">Back to Home Page</button></a>
+				</form>
+			</div> <!--/.col-->
+		</div> <!--/.row-->
+
+		<div class="modal fade" tabindex="-1" role="dialog" id="friendModal">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+     		 <div class="modal-header">
+       			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title">Your Friend Match Is...</h4>
+      		</div> <!--/.modal-header-->
+     			<div class="modal-body text-center" id="friendInfo"></div>
+     			<div class="modal-footer">
+        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      		</div> <!--/.modal-footer-->
+    		</div><!-- /.modal-content -->
+ 			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</div> <!--/.container-->
+
+	<script type="text/javascript">
+		$("#submit").click(function(){
+			event.preventDefault();
+			var score = [];
+			var name = $("#name").val();
+			var picture = $("#picture").val();
+			var newFriend = {
+				"name": name,
+				"picture": picture
+			};
+			for(var i = 0; i < 10; i++){
+				var id = document.getElementById(String(i));
+				var questionScore = $(id).val().split(".");
+				score.push(parseInt(questionScore[0]));
+			}
+			newFriend.friendScore = score;
+			$.post("/api/new", newFriend)
+      .done(function(data) {
+      	var friend = $("<h4>");
+      	var friendPic = $("<img>");
+      	var friendScore = $("<p>");
+      	friend.append(data.name);
+      	friendPic.attr("src", data.picture);
+      	friendScore.append(data.friendScore);
+      	$("#friendInfo").append(friend);
+      	$("#friendInfo").append(friendPic);
+      	$("#friendInfo").append(friendScore);
+      	$('#friendModal').modal("show");
+      });
+		});
+	</script>	
 
 </body>
 </html>
