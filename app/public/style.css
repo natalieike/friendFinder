@@ -19,10 +19,11 @@ body{
 	overflow: auto;
 	display: inline-block;
 }
-
+/*
 #friendPanel{
 	display: none;
 }
+*/
 .navbar{
 	background-color: #e6f2ff;
 	color: #000d1a;

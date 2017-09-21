@@ -5,8 +5,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/style">
 </head>
 <body>
@@ -142,7 +140,7 @@
 			</div> <!--/.col-->
 		</div> <!--/.row-->
 
-		<div class="modal fade" tabindex="-1" role="dialog" id="friendModal">
+		<div class="modal" tabindex="-1" role="dialog" id="friendModal">
   		<div class="modal-dialog" role="document">
     		<div class="modal-content">
      		 <div class="modal-header">
@@ -158,8 +156,10 @@
 		</div><!-- /.modal -->
 	</div> <!--/.container-->
 
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		$("#submit").click(function(){
+		$("#submit").on("click", function(event){
 			event.preventDefault();
 			var score = [];
 			var name = $("#name").val();

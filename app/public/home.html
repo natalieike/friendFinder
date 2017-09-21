@@ -5,47 +5,47 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/style">
-</head>	
+  <link rel="stylesheet" type="text/css" href="/style">
+</head> 
 <body>
-	<div class="container">
-		<div class="jumbotron text-center">
-			<h1>Welcome to the Friend Finder!</h1>
-			<hr>
-			<a href="/survey"><button type="button" class="btn btn-primary">Start the Friend Quiz</button></a>
-			<button type="button" class="btn btn-info" id="allFriends">See All Friends</button>
-		</div> <!--/.jumbotron-->
-		<div class="panel" id="friendPanel">
-  		<div class="panel-heading">
-    		<h3 class="panel-title text-center">Available Friends</h3>
-  		</div> <!--/.panel-heading-->
-  		<div class="panel-body">
-  			<table class="table" id="friendList">
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Welcome to the Friend Finder!</h1>
+      <hr>
+      <a href="/survey"><button type="button" class="btn btn-primary">Start the Friend Quiz</button></a>
+      <button type="button" class="btn btn-info" id="allFriends">See All Friends</button>
+    </div> <!--/.jumbotron-->
+    <div class="panel" id="friendPanel">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Available Friends</h3>
+      </div> <!--/.panel-heading-->
+      <div class="panel-body">
+        <table class="table" id="friendList">
           <tr>
             <th>Name</th>
             <th>Photo</th>
             <th>Friend Score</th>
           </tr>
         </table>
-  		</div> <!--/.panel-body-->
-		</div>	<!--/.panel-->
-	</div> <!--/.container-->
+      </div> <!--/.panel-body-->
+    </div>  <!--/.panel-->
+  </div> <!--/.container-->
 
-	<script type="text/javascript">
-		//click handler for all-friends button
-		$("#allFriends").on("click", function(){
-			$("#friendPanel").show();
-    	$.get("/api/", function(data) {
-      	for(var i = 0; i < data.length; i++){
-        	var tableRow = $("<tr>");
-      	  tableRow.append("<th>" + data[i].name + "</th>");
-        	tableRow.append("<th><img src='" + data[i].picture + "' alt='friend " + i + " picture' class='friendPicture'></th>");
-  	      tableRow.append("<th>" + data[i].friendScore + "</th>");
-      	  $("#friendList").append(tableRow);
-   	   }
-    	});
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    //click handler for all-friends button
+    $("#allFriends").on("click", function(){
+      $("#friendPanel").show();
+      $.get("/api/", function(data) {
+        for(var i = 0; i < data.length; i++){
+          var tableRow = $("<tr>");
+          tableRow.append("<th>" + data[i].name + "</th>");
+          tableRow.append("<th><img src='" + data[i].picture + "' alt='friend " + i + " picture' class='friendPicture'></th>");
+          tableRow.append("<th>" + data[i].friendScore + "</th>");
+          $("#friendList").append(tableRow);
+       }
+      });
   	});
 
   </script>
